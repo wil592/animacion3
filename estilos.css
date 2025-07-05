@@ -1,0 +1,322 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(240, 11, 240, 0.12), rgba(236, 12, 236, 0.2));
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mensaje {
+  word-break: break-word;
+  width: 80%;
+  max-width: 280px;
+  position: absolute;
+  top: 40%; /* más arriba */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px 20px; /* menos espacio horizontal */
+  border-radius: 20px;
+  text-align: center;
+  z-index: 1;
+  border: 3px solid transparent;
+  box-shadow: 0 0 20px #ae00ff, 0 0 40px hsl(300, 100%, 50%), 0 0 60px #ff00ff;
+  animation: fuegoBrillante 2s infinite ease-in-out;
+}
+
+
+.mensaje h1,
+.mensaje h2 {
+  margin: 10px 0;
+  font-size: clamp(20px, 5vw, 36px);
+  font-weight: 300;
+  background: linear-gradient(180deg, #c514c5, #ccff00, #ff0011);
+  background-size: 100% 300%;
+  background-position: 0 0;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: animarTexto 5s linear infinite;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.mensaje p {
+  font-size: clamp(16px, 4.5vw, 28px);
+  color: #99ff00;
+  margin-top: 20px;
+  text-shadow: 0 0 10px #ff00ff;
+  font-weight: 300;
+}
+
+#contadorDias {
+  position: absolute;
+  top: calc(59% + 90px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 14px 28px;
+  border-radius: 15px;
+  font-size: clamp(16px, 4.5vw, 24px);
+  font-weight: 300;
+  text-align: center;
+  z-index: 1;
+  border: 3px solid transparent;
+  box-shadow: 0 0 20px #ae00ff, 0 0 40px hsl(300, 100%, 50%), 0 0 60px #ff00ff;
+  animation: fuegoBrillante 2s infinite ease-in-out;
+  color: #99ff00;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+@keyframes animarTexto {
+  0% { background-position: 0 0; }
+  50% { background-position: 0 100%; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes fuegoBrillante {
+  0%, 100% {
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff66ff, 0 0 40px #ff33cc, 0 0 60px #cc00ff;
+  }
+}
+
+.login-romantico {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  width: 85%;
+  padding: 50px 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #f30cf3;
+  text-align: center;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  color: hsl(300, 96%, 55%);
+  max-width: 280px;
+}
+
+.login-romantico h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #bf28bf;
+}
+
+.login-romantico input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 18px;
+  background: rgb(238, 101, 231);
+  color: #ffffff;
+  width: 150px;
+}
+
+.login-romantico input:focus {
+  outline: none;
+  border: 2px solid #cc00cc;
+  box-shadow: 0 0 8px #ff00ff;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teclado {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.teclado button,
+.teclado-controles button {
+  padding: 12px;
+  font-size: 18px;
+  background: linear-gradient(145deg, #fb09cf, #f61df2);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #f40de4, 0 0 20px #f5afec;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.teclado button:hover,
+.teclado-controles button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px #fb07ce, 0 0 30px #e81de8;
+}
+
+.teclado-controles {
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.musica-container-horizontal {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 102;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.musica-btn {
+  background: #660066;
+  color: white;
+  padding: 14px;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 12px #ff00ff, 0 0 24px #cc00ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.musica-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff33ff, 0 0 40px #cc00ff;
+}
+
+.volver-btn {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: #ff00ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-size: clamp(12px, 2.5vw, 16px); /* se adapta al tamaño de pantalla */
+  cursor: pointer;
+  z-index: 150;
+  box-shadow: 0 0 10px #ff00ff;
+  max-width: 80vw;
+  white-space: nowrap;
+}
+
+
+.heart-bubble {
+  position: fixed;
+  bottom: -60px;
+  color: white;
+  animation: subirCorazon 8s linear forwards;
+  z-index: 0;
+  pointer-events: none;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s ease;
+}
+
+@keyframes subirCorazon {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-50vh) scale(1.2);
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.color-circles {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+}
+
+.color-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 600px) {
+  .login-romantico {
+    width: 90%;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .login-romantico input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .teclado-controles button,
+  .teclado button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mensaje h1,
+  .mensaje h2,
+  .mensaje p {
+    font-size: 5vw;
+  }
+
+  .volver-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .musica-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .login-romantico {
+    width: 400px;
+  }
+  .teclado button,
+  .teclado-controles button {
+    font-size: 20px;
+    padding: 14px;
+  }
+}

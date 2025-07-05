@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Te Amo Mi Amor ❤️</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <!-- 🎵 MÚSICA -->
+  <audio id="musica" src="musica/Reik - Sabes (Letra _ Lyrics)(M4A_128K).m4a" preload="auto"></audio>
+
+  <!-- BOTÓN DE MÚSICA COMO CORAZÓN -->
+  <div class="musica-container-horizontal">
+    <button id="playMusica" onclick="activarMusica()" class="musica-btn">
+      <span>🎵</span>
+    </button>
+  </div>
+
+  <!-- 💖 LOGIN ROMÁNTICO -->
+  <div id="login" class="login-romantico">
+    <h2>❤️PARA LA NIÑA DE MIS OJOS❤️</h2>
+    <p>Ingresa la fecha que jamás olvidaremos:</p>
+    <input type="password" id="clave" placeholder="ddmmaaa" readonly />
+
+    <!-- TECLADO TIPO PIN -->
+    <div class="teclado">
+      <button onclick="agregarNumero('1')">1</button>
+      <button onclick="agregarNumero('2')">2</button>
+      <button onclick="agregarNumero('3')">3</button>
+      <button onclick="agregarNumero('4')">4</button>
+      <button onclick="agregarNumero('5')">5</button>
+      <button onclick="agregarNumero('6')">6</button>
+      <button onclick="agregarNumero('7')">7</button>
+      <button onclick="agregarNumero('8')">8</button>
+      <button onclick="agregarNumero('9')">9</button>
+      <button onclick="agregarNumero('*')">*</button>
+      <button onclick="agregarNumero('0')">0</button>
+      <button onclick="agregarNumero('#')">#</button>
+    </div>
+
+    <!-- BOTONES DE CONTROL -->
+    <div class="teclado-controles">
+      <button onclick="borrarNumero()">Borrar</button>
+      <button onclick="verificarClave()">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- ANIMACIÓN CANVAS -->
+  <canvas id="matrix" style="display: none;"></canvas>
+  <button id="volverBtn" class="volver-btn" style="display: none;">Volver al inicio</button>
+
+  <!-- CUADRO CENTRAL -->
+  <div class="mensaje" style="display: none;">
+    <h1>"Cada segundo</h1>
+    <h2>que pasa</h2>
+    <h2>Te amo mas"</h2>
+    <h2>C❤️M</h2>
+    <p>08/06/2025</p> <!-- esta fecha debe ser la misma que la del contador -->
+  </div>
+
+  <!-- CUADRO DEL CONTADOR -->
+  <div id="contadorDias" class="contador-dias" style="display: none;"></div>
+
+  <!-- CORAZONES FLOTANTES -->
+  <script>
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.className = "heart-bubble";
+      corazon.textContent = "🤍";
+      corazon.style.left = Math.random() * 100 + "vw";
+      const esGrande = Math.random() < 0.7;
+      const tamano = esGrande ? Math.random() * 40 + 40 : Math.random() * 20 + 20;
+      corazon.style.fontSize = tamano + "px";
+      corazon.style.opacity = Math.random() * 0.1 + 0.5;
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 8000);
+    }
+
+    setInterval(crearCorazon, 200);
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
